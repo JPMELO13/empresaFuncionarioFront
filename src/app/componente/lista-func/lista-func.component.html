@@ -1,0 +1,41 @@
+<!-- Linha de divs vazias para começar a pag após o header -->
+<div class="m-5">
+  <div class="p-3">
+    <div class="m-3"></div>
+  </div>
+</div>
+
+<!-- NavBar(outro componente) para manipulação dos funcionarios -->
+
+  <div class="row">
+    <div class="col-2 mt-4">
+      <app-nav-func></app-nav-func>
+    </div>
+    <div class="col-10">
+      <h3 class="text-center">Tabela de Todos Funcionários</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Atribuição</th>
+            <th scope="col">Cidade</th>
+
+            <!-- <th scope="col">Cargo</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let funcionario of funcionarios ">
+            <th scope="row">{{funcionario.func_id}}</th>
+            <td>{{funcionario.func_nome}}</td>
+            <td>{{funcionario.func_cargo}}</td>
+            <td>{{funcionario.func_atribuicao}}</td>
+            <td>{{funcionario.func_cidade}}</td>
+            <!-- <td>{{funcionario.id_cargo}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

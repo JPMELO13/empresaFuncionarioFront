@@ -1,0 +1,43 @@
+<!-- Linha de divs vazias para começar a pag após o header -->
+<div class="m-5">
+  <div class="p-3">
+    <div class="m-3"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2 mt-4">
+    <app-nav-func></app-nav-func>
+  </div>
+  <div class="col-10 mt-5">
+    <h5 class="title text-center">Editar Funcionario</h5>
+    <form class="w-75  mx-auto">
+      <div class="mb-5">
+        <label class="form-label">Nome:</label>
+        <input type="text" class="form-control" [(ngModel)]="func.func_nome" name="func_nome">
+      </div>
+      <div class="mb-5">
+        <label class="form-label">Cidade:</label>
+        <input type="text" class="form-control" [(ngModel)]="func.func_cidade" name="func_cidade">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Cargo:</label>
+        <!-- <select class="form-select" [(ngModel)]="cargoFunc.car_nome" name="car_nome"></select> -->
+        <select class="form-select" [(ngModel)]="func.car_id" name="car_nome">
+          <option *ngFor="let cargo of cargosFunc" [value]="cargo.car_id" >
+            {{cargo.car_nome}}
+          </option>
+      </select>
+      </div>
+      <div class="text-center">
+        <button (click)="editarFunc()" class="btn btn-outline-success ">Editar</button>
+        <button type="reset" class="btn btn-outline-secondary mx-3 my-5">Limpar</button>
+        <button class="btn btn-outline-danger"  routerLink="/listaFunc">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="toast-container">
+  <ngb-toast *ngIf="toastEdicao" class = 'toast-container position-fixed  end-0 p-1' [autohide]="true">
+    {{mensagemToastEdicao}}
+  </ngb-toast>

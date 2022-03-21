@@ -1,0 +1,106 @@
+<!-- Linha de divs vazias para começar a pag após o header -->
+<div class="m-5">
+  <div class="p-3">
+    <div class="m-3"></div>
+  </div>
+</div>
+
+<!-- NavBar(outro componente) para manipulação dos funcionarios -->
+<div class="row pb-5">
+  <div class="col-2 mt-4">
+    <app-nav-func></app-nav-func>
+  </div>
+  <div class="col-10">
+    <h3 class="text-center">Tabela de {{cargo.car_nome}}</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let func of cargo.funcionario ">
+          <th scope="row">{{func.func_id}}</th>
+          <td>
+            {{func.func_nome}}
+          </td>
+          <td>
+            {{func.func_cidade}}
+          </td>
+          <td>
+            <a>
+              <i routerLink="/editaFunc/{{func.func_id}}" class="fa-solid fa-pencil"></i>
+            </a>
+            <a>
+              <i class="fa-solid fa-eraser ms-3" data-bs-toggle="modal" data-bs-target="#ModalDelFuncionario" (click)="preencheExclusaoFuncionario(func)"></i>
+            </a>
+          </td>
+         </tr>
+         <tr>
+           <td colspan="4" class='text-center' role="button"  routerLink="/cadastroFunc/{{cargo.car_id}}"> <i class="fa-solid fa-user-plus fa-lg"></i></td>
+         </tr>
+      </tbody>
+    </table>
+    <div class="btn  ms-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Para excluir um cargo é necessário não ter funcionários atribuídos.">
+      <button [disabled]=!cargovazio tabindex="0" class=" btn btn-danger "   data-bs-toggle="modal" data-bs-target="#ModalDelCargo" >Excluir Cargo</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Excluir Funcionario -->
+<div class="modal fade" id="ModalDelFuncionario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"style="background-color: #FFEADB;">
+      <div class="modal-header " >
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Funcionário</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <label class="form-label" for="codigo">Código:</label>
+        <input type="text" class="form-control mb-3" [(ngModel)]="funcionarioExclusao.func_id" name="codigo" readonly>
+        <label class="form-label " for="nome">Nome:</label>
+        <input type="text" class="form-control mb-3" [(ngModel)]="funcionarioExclusao.func_nome" name="nome" readonly>
+        <label class="form-label " for="cidade">Cidade:</label>
+        <input type="text" class="form-control " [(ngModel)]="funcionarioExclusao.func_cidade" name="cidade" readonly>
+      </div>
+      <div class="text-center p-2 mb-3">
+        <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-outline-danger ms-2" data-bs-dismiss="modal" (click)="excluirFuncionario()">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Excluir Cargo -->
+<div class="modal fade" id="ModalDelCargo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"style="background-color: #FFEADB;">
+      <div class="modal-header " >
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Cargo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label " for="nome">Cargo:</label>
+        <input type="text" class="form-control mb-3" [(ngModel)]="cargo.car_nome" name="nome" readonly>
+        <label class="form-label " for="cidade">Atribuicao:</label>
+        <input type="text" class="form-control " [(ngModel)]="cargo.car_atribuicao" name="cidade" readonly>
+      </div>
+      <div class="text-center p-2 mb-3">
+        <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-outline-danger ms-2" (click)="excluirCargo()" data-bs-dismiss="modal">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container">
+  <ngb-toast *ngIf="toast" class = 'toast-container position-fixed  end-0 p-1' [autohide]="true">
+    {{mensagemToast}}
+  </ngb-toast>

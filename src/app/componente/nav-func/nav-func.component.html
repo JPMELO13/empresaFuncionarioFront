@@ -1,0 +1,10 @@
+
+<div class="list-group">
+  <button  class="list-group-item list-group-item-action list-group-item-success active disabled"
+    aria-current="true">
+    EDITAR FUNCIONARIOS POR CARGO
+  </button>
+  <a href="/cargo/{{cargo.car_id}}" class="list-group-item list-group-item-action list-group-item-success"
+    *ngFor="let cargo of cargos">{{ cargo.car_nome }}</a>
+    <a class="list-group-item list-group-item-action list-group-item-success text-center" routerLink="/cadastroCargo"><i class="fa-solid fa-circle-plus fa-xl"></i></a>
+</div>
