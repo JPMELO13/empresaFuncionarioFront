@@ -1,0 +1,52 @@
+
+<!-- Linha de divs vazias para começar a pag após o header -->
+<div class="m-5">
+  <div class="p-3">
+    <div class="m-3"></div>
+  </div>
+</div>
+
+<!-- NavBar(outro componente) para manipulação dos funcionarios -->
+<div class="row pb-5">
+  <div class="col-2 mt-4">
+    <app-nav-func></app-nav-func>
+  </div>
+  <div class="col-10">
+    <button class="btn btn-outline-danger" (click)="volarPag()"><i class="fas fa-arrow-left"></i> Voltar</button>
+    <h3 class="text-center">Dependentes de {{funcionario.func_nome}}</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+          <th scope="col">Relação</th>
+          <th scope="col">Ações</th>
+
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let dep of deps ">
+          <td>
+            {{dep.depNome}}
+          </td>
+          <td>
+            {{dep.depIdade}}
+          </td>
+          <td>{{dep.depRelacao}}</td>
+          <td>
+            <button class="btn btn-outline-dark p-0 px-1" routerLink="/editaFunc/{{dep.func_id}}">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
+            <button class="btn btn-outline-dark p-0 px-1 ms-3"  >
+              <i class="fa-solid fa-eraser " data-bs-toggle="modal" data-bs-target="#ModalDelFuncionario" ></i>
+            </button>
+          </td>
+         </tr>
+         <tr>
+           <td colspan="5" class='text-center' role="button"  routerLink="/cadastroDependente/{{dep.func_id}}"> <i class="fa-solid fa-user-plus fa-lg"></i></td>
+         </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

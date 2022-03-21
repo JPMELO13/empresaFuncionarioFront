@@ -18,7 +18,9 @@
           <th scope="col">Código</th>
           <th scope="col">Nome</th>
           <th scope="col">Cidade</th>
+          <th scope="col">Dependentes</th>
           <th scope="col">Ações</th>
+
         </tr>
       </thead>
       <tbody >
@@ -30,17 +32,18 @@
           <td>
             {{func.func_cidade}}
           </td>
+          <td> <button class="btn btn-outline-dark p-0 px-1" routerLink="/listaDependente/{{func.func_id}}"><i class="fas fa-user-friends" ></i></button></td>
           <td>
-            <a>
-              <i routerLink="/editaFunc/{{func.func_id}}" class="fa-solid fa-pencil"></i>
-            </a>
-            <a>
-              <i class="fa-solid fa-eraser ms-3" data-bs-toggle="modal" data-bs-target="#ModalDelFuncionario" (click)="preencheExclusaoFuncionario(func)"></i>
-            </a>
+            <button class="btn btn-outline-dark p-0 px-1" routerLink="/editaFunc/{{func.func_id}}">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
+            <button class="btn btn-outline-dark p-0 px-1 ms-3" (click)="preencheExclusaoFuncionario(func)" >
+              <i class="fa-solid fa-eraser " data-bs-toggle="modal" data-bs-target="#ModalDelFuncionario" ></i>
+            </button>
           </td>
          </tr>
          <tr>
-           <td colspan="4" class='text-center' role="button"  routerLink="/cadastroFunc/{{cargo.car_id}}"> <i class="fa-solid fa-user-plus fa-lg"></i></td>
+           <td colspan="5" class='text-center' role="button"  routerLink="/cadastroFunc/{{cargo.car_id}}"> <i class="fa-solid fa-user-plus fa-lg"></i></td>
          </tr>
       </tbody>
     </table>

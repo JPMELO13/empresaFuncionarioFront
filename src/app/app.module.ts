@@ -17,6 +17,9 @@ import { CadastroCargoComponent } from './componente/cadastro-cargo/cadastro-car
 import { EditaFuncComponent } from './componente/edita-func/edita-func.component';
 import { CadastroFuncComponent } from './componente/cadastro-func/cadastro-func.component';
 import {NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListaDependenteComponent } from './componente/lista-dependente/lista-dependente.component';
+import { CadastroDependenteComponent } from './componente/cadastro-dependente/cadastro-dependente.component';
+import { EditaDependenteComponent } from './componente/edita-dependente/edita-dependente.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
     ListaCargosComponent,
     CadastroCargoComponent,
     EditaFuncComponent,
-    CadastroFuncComponent
+    CadastroFuncComponent,
+    ListaDependenteComponent,
+    CadastroDependenteComponent,
+    EditaDependenteComponent
   ],
   imports: [
     BrowserModule,

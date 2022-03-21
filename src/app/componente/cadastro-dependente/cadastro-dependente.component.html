@@ -1,0 +1,43 @@
+<!-- Linha de divs vazias para começar a pag após o header -->
+<div class="m-5">
+  <div class="p-3">
+    <div class="m-3"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-2 mt-4">
+    <app-nav-func></app-nav-func>
+  </div>
+  <div class="col-10 mt-5">
+    <h3 class="title text-center">Cadastro de Dependente</h3>
+    <div class="mb-3 text-center">
+      <label class="form-label">Para o funcionário:
+      <input type="text" class="form-control text-center" [(ngModel)]="nomeFuncionario"   name="car_nome" [disabled]="true"></label>
+    </div>
+    <form class="w-75  mx-auto">
+
+      <div class="mb-3">
+        <label class="form-label">Nome:</label>
+        <input type="text" class="form-control" [(ngModel)]="dep.depNome"   name="depNome" >
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Idade:</label>
+        <input type="number" class="form-control" [(ngModel)]="dep.depIdade" name="depIdade">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Relação:</label>
+        <input type="text" class="form-control" [(ngModel)]="dep.depRelacao" name="depRelacao">
+      </div>
+
+      <div class="text-center">
+        <button (click)="cadastrarDep()" class="btn btn-outline-success ">Cadastrar</button>
+        <button type="reset" class="btn btn-outline-secondary mx-3 my-5">Limpar</button>
+        <button class="btn btn-outline-danger"  routerLink="/listaFunc">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="toast-container">
+  <ngb-toast *ngIf="toastCadastro" class = 'toast-container position-fixed  end-0 p-1' [autohide]="true">
+    {{mensagemToastCadastro}}
+  </ngb-toast>
