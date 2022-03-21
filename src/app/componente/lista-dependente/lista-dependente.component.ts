@@ -28,7 +28,15 @@ export class ListaDependenteComponent implements OnInit {
     func_id:''
   }
 
+  depExclusao:Dependente={
+    depId:'',
+    depNome:'',
+    depIdade:'',
+    depRelacao:''
+  }
 
+  toast = false
+  mensagemToast = ''
 
 
   constructor(private dependenteService:DependenteService, private funcionarioService:FuncionarioService, private route:ActivatedRoute, private router:Router, private location:Location ) { }
@@ -58,6 +66,26 @@ export class ListaDependenteComponent implements OnInit {
   volarPag(){
     this.location.back();
 
+  }
+
+  preencherModalDelDep(dep:Dependente){
+    this.depExclusao.depId= dep.depId
+    this.depExclusao.depIdade = dep.depIdade
+    this.depExclusao.depNome = dep.depNome
+    this.depExclusao.depRelacao =dep.depRelacao
+  }
+
+  excluirDep(){
+    this.dependenteService.excluirDependente(this.depExclusao.depId).subscribe({
+
+      complete:()=>{this.mensagemToast="Dependente excluído com sucesso!"
+        this.toast=true
+        },
+      error:()=>{this.mensagemToast="Erro ao excluir dependente"
+      this.toast=true},
+      next:()=>{setTimeout(()=>{window.location.reload();}, 1000)}
+
+    })
   }
 
 }

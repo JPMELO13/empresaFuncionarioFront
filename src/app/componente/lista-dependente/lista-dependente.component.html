@@ -37,8 +37,8 @@
             <button class="btn btn-outline-dark p-0 px-1" routerLink="/editaFunc/{{dep.func_id}}">
               <i class="fa-solid fa-pencil"></i>
             </button>
-            <button class="btn btn-outline-dark p-0 px-1 ms-3"  >
-              <i class="fa-solid fa-eraser " data-bs-toggle="modal" data-bs-target="#ModalDelFuncionario" ></i>
+            <button class="btn btn-outline-dark p-0 px-1 ms-3" (click)="preencherModalDelDep(dep)" >
+              <i class="fa-solid fa-eraser " data-bs-toggle="modal" data-bs-target="#ModalDelDependente" ></i>
             </button>
           </td>
          </tr>
@@ -50,3 +50,33 @@
 
   </div>
 </div>
+
+<!-- Modal Excluir Funcionario -->
+<div class="modal fade" id="ModalDelDependente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"style="background-color: #FFEADB;">
+      <div class="modal-header " >
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Dependente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <label class="form-label " for="nome">Nome:</label>
+        <input type="text" class="form-control mb-3" [(ngModel)]="depExclusao.depNome" name="nome" readonly>
+        <label class="form-label " for="cidade">Idade:</label>
+        <input type="text" class="form-control " [(ngModel)]="depExclusao.depIdade" name="idade" readonly>
+        <label class="form-label " for="cidade">Relação:</label>
+        <input type="text" class="form-control " [(ngModel)]="depExclusao.depRelacao" name="relacao" readonly>
+      </div>
+      <div class="text-center p-2 mb-3">
+        <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-outline-danger ms-2" data-bs-dismiss="modal" (click)="excluirDep()">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container">
+  <ngb-toast *ngIf="toast" class = 'toast-container position-fixed  end-0 p-1' [autohide]="true">
+    {{mensagemToast}}
+  </ngb-toast>
