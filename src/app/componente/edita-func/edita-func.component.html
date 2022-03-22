@@ -27,7 +27,7 @@
           <option *ngFor="let cargo of cargosFunc" [value]="cargo.car_id" >
             {{cargo.car_nome}}
           </option>
-      </select>
+        </select>
       </div>
       <div class="text-center">
         <button (click)="editarFunc()" class="btn btn-outline-success ">Editar</button>
@@ -41,3 +41,4 @@
   <ngb-toast *ngIf="toastEdicao" class = 'toast-container position-fixed  end-0 p-1' [autohide]="true">
     {{mensagemToastEdicao}}
   </ngb-toast>
+</div>

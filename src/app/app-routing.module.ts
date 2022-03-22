@@ -1,3 +1,4 @@
+import { EditaDependenteComponent } from './componente/edita-dependente/edita-dependente.component';
 import { CadastroDependenteComponent } from './componente/cadastro-dependente/cadastro-dependente.component';
 import { ListaDependenteComponent } from './componente/lista-dependente/lista-dependente.component';
 import { CadastroFuncComponent } from './componente/cadastro-func/cadastro-func.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"editaFunc/:func_id", component:EditaFuncComponent},
   {path:"cadastroFunc/:car_id", component:CadastroFuncComponent},
   {path:"listaDependente/:func_id", component:ListaDependenteComponent},
-  {path:"cadastroDependente/:func_id", component:CadastroDependenteComponent}
+  {path:"cadastroDependente/:func_id", component:CadastroDependenteComponent},
+  {path:"editaDependente/:depId", component:EditaDependenteComponent}
 
 ];
 

@@ -21,6 +21,10 @@ export class DependenteService {
     const url = `${this.baseUrl}/dependente/${depId}`
     return this.http.get<Dependente>(url)
   }
+  mostrarUmDependenteFunc(depId:string):Observable<any>{
+    const url = `${this.baseUrl}/dependenteFunc/${depId}`
+    return this.http.get<any>(url)
+  }
 
   mostrarDependentesPorFuncionario(func_id:string):Observable<Dependente[]>{
     const url = `${this.baseUrl}/dependente/funcionario/${func_id}`
